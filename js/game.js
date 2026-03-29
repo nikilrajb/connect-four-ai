@@ -134,7 +134,7 @@ class Game {
 
         this._ui.animateDrop(col, visualRow, player, () => {
             if (this._board.checkWin(logRow, col)) {
-                this._handleWin(logRow, col);
+                this._handleWin(logRow, col, player);
             } else if (this._board.isBoardFull()) {
                 this._handleDraw();
             } else if (player === this.PLAYER) {
@@ -164,11 +164,11 @@ class Game {
         }, 600);
     }
 
-    _handleWin(logRow, col) {
+    _handleWin(logRow, col, winner) {
         this._gameOver = true;
         const winCells = this._board.getWinningCells(logRow, col);
 
-        if (this._currentPlayer === this.PLAYER) {
+        if (winner === this.PLAYER) {
             this._scores.player++;
             this._ui.setStatus('You win! 🎉', 'player-win');
         } else {
