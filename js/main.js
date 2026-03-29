@@ -7,10 +7,8 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     // ── Instantiate components ──────────────────────────────────
-    const board = new GameBoard();
-    const ai    = new AIPlayer('medium');
-    const game  = new Game();
-    const ui    = new UI();
+    const game = new Game();
+    const ui   = new UI();
 
     // Wire them together
     game.setUI(ui);
